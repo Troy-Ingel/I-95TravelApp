@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<title>Tech Challenge</title>
+
+	<script src="lib/angular.js"></script>
+	<script src="lib/angular-route.js"></script>
+	<script src="lib/angular-cookies.js"></script>
+	<script src="lib/jquery.js"></script>
+</head>
+<body>
+
+	<div ng-view></div>
+	
+	<!-- Angular App -->
+	<script src="app/app.js"></script>
+	<script src="app/app.routes.js"></script>
+
+	<!-- Controllers -->
+	<script src="app/controllers/mainController.js"></script>
+	<script src="app/controllers/homeController.js"></script>
+
+	<!-- Services -->
+	<script src="app/services/TravelSmartFactory.js"></script>
+</body>
+</html>
