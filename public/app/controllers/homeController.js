@@ -5,7 +5,6 @@ angular
 HomeController.$inject = ["TravelSmartFactory"];
 
 function HomeController(TravelSmartFactory){
-
 	var vm = this;
 	vm.events = [];
 
@@ -15,7 +14,6 @@ function HomeController(TravelSmartFactory){
 
 	function activate(){
 		TravelSmartFactory.getEvents().then(function(res){
-			console.log(res);
 			vm.events = res;
 		});
 	}
