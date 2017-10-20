@@ -16,5 +16,8 @@ function HomeController(TravelSmartFactory){
 		TravelSmartFactory.getEvents().then(function(res){
 			vm.events = res;
 		});
+		TravelSmartFactory.getAlerts().then(function(res){
+			vm.alerts = res;
+		});
 	}
 }

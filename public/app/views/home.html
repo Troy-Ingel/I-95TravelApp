@@ -1,8 +1,36 @@
-<div ng-repeat="event in vm.events" ng-show="event.RoadwayName">
-	<h2>{{event.RoadwayName}}</h2>
-	<p>{{event.Location}}</p>
-	<p>Duration: {{event.Description}}</p>
+<div class="container">
+
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Recent Events</div>
+			<div class="panel-body">
+				<div ng-repeat="event in vm.events" ng-show="event.RoadwayName" ng-cloak>
+					<h2>{{event.RoadwayName}}</h2>
+					<p>{{event.Location}}</p>
+					<p>Duration: {{event.Description}}</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Alerts</div>
+			<div class="panel-body">
+				<div ng-repeat="alert in vm.alerts" ng-cloak ng-show="vm.alerts.length > 0">
+					<p>{{alert.Message}}</p>
+					<hr>
+				</div>
+				<div class="alert alert-warning" ng-show="vm.alerts.length == 0">
+					<h4>No alerts at this time</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
+
 <!-- 
 	COLUMNS IN RESPONSE
 CountyName
