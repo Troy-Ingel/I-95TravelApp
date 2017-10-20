@@ -14,13 +14,13 @@ router.get('/events', function(req, res){
 			var json = JSON.parse(data);
 			var output = [];
 
+			//Look through all json received and search for 'I-95'
 			for(var i = 0; i < json.length; i++){
 				var cur = json[i];
 				if(cur.RoadwayName == "I-95") output.push(cur);
 			}
 
 			res.json(output);
-
 		});
 	}).on('error', (err) => {
 		res.json(err);
