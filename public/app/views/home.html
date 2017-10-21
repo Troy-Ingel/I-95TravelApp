@@ -29,6 +29,43 @@
 		</div>
 	</div>
 
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Transit Options</div>
+			<div class="panel-body">
+				<div ng-show="vm.currentLocation">
+					<p>Current Location:</p>
+					<input type="text" class="form-control" ng-model="vm.currentLocation" readonly>
+				</div>
+
+				<div ng-show="vm.currentLocation">
+					<p>Enter destination:</p>
+					<input type="text" class="form-control" ng-model="vm.destination">
+				</div>
+
+				<button class="btn btn-success" ng-show="!vm.currentLocation" ng-click="vm.getLocation()">Get Location</button>
+				<button class="btn btn-success" ng-click="vm.getDirections()" ng-show="vm.destination && vm.currentLocation">Get Directions</button>
+
+
+
+				<div ng-show="vm.directions">
+					<hr>
+					<table class="table">
+						<thead>
+							<th>Step</th>
+							<th>Duration (min)</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="step in vm.directions">
+								<td>{{step.html_instructions}}</td>
+								<td>{{step.duration.text}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- 
