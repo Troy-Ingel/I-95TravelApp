@@ -33,6 +33,11 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">Transit Options</div>
 			<div class="panel-body">
+				
+				<div ng-show="vm.loading" class="alert alert-warning">
+					<b>Loading...</b>
+				</div>
+
 				<div ng-show="vm.currentLocation">
 					<p>Current Location:</p>
 					<input type="text" class="form-control" ng-model="vm.currentLocation" readonly>
