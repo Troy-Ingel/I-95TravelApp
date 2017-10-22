@@ -24,6 +24,25 @@ router.get('/transit', function(req, res){
 	});
 })
 
+.get('/driving', function(req, res){
+	const baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
+	const origin = req.query.origin;
+	const destination = req.query.destination;
+	var url = baseUrl + '?origin=' + origin + '&destination=' + destination;
+	url += '&key=' + apiKey;
+	url += '&mode=driving&departure_time=now';
+
+	https.get(url, (httpRes) => {
+		let data = '';
+		httpRes.on('data', (chunk)=> data += chunk);
+		httpRes.on('end', ()=>{
+			res.json(JSON.parse(data));
+		});
+	}).on('error', (err) => {
+		res.json(err);
+	});
+})
+
 .get('/geocode', function(req, res){
 
 	const baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json';

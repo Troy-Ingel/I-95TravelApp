@@ -10,6 +10,7 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 
 	vm.getDirections = getDirections;
 	vm.getLocation = getLocation;
+	vm.getRecommendation = getRecommendation;
 
 	activate();
 
@@ -18,7 +19,12 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 	function getDirections(){
 		vm.loading = true;
 		GoogleMapsFactory.getTransitDirections(vm.currentLocation, vm.destination).then(function(res){
-			vm.directions = res.routes[0].legs[0].steps;
+			vm.directions = res.routes[0].legs[0];
+			vm.loading = false;
+		});
+
+		GoogleMapsFactory.getDrivingDirections(vm.currentLocation, vm.destination).then(function(res){
+			vm.drivingDirections = res.routes[0].legs[0];
 			vm.loading = false;
 		});
 	}
@@ -30,6 +36,22 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 				vm.loading = false;
 			})
 		})
+	}
+	function getRecommendation(){
+		if(vm.directions && vm.drivingDirections){
+			var drivingDuration = Number(vm.drivingDirections.duration.value);
+			var transitDuration = Number(vm.directions.duration.value);
+
+			var difference = (Math.abs(drivingDuration - transitDuration)) / 60;
+
+			if(drivingDuration < transitDuration){
+				return "You should drive to get there " + difference + " min faster";
+			} else if(transitDuration < drivingDuration){
+				return "You should take the train to get there " + difference + " min faster";
+			} else{
+				return "Not sure";
+			}
+		}
 	}
 	function activate(){
 		TravelSmartFactory.getEvents().then(function(res){

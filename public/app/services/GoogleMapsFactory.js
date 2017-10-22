@@ -8,6 +8,7 @@ function GoogleMapsFactory($http){
 
 	var service = {
 		getTransitDirections: getTransitDirections,
+		getDrivingDirections: getDrivingDirections,
 		reverseGeocode: reverseGeocode
 	};
 
@@ -17,6 +18,13 @@ function GoogleMapsFactory($http){
 
 	function getTransitDirections(origin, destination){
 		var url = '/directions/transit?origin=' + origin + '&destination=' + destination;
+
+		return $http.get(url)
+			.then((res)=>res.data)
+			.catch((err)=>console.error(err));
+	}
+	function getDrivingDirections(origin, destination){
+		var url = '/directions/driving?origin=' + origin + '&destination=' + destination;
 
 		return $http.get(url)
 			.then((res)=>res.data)
