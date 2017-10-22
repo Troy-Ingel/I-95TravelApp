@@ -3,6 +3,8 @@ var morgan = require('morgan');
 var travelRouter = require('./routes/travel');
 var directionsRouter = require('./routes/directions');
 
+var port = process.env.PORT || 8080;
+
 express()
 	.use(morgan('dev'))
 	.use(express.static('public'))
