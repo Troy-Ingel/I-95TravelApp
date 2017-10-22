@@ -8,19 +8,21 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 	var vm = this;
 	vm.events = [];
 
+	vm.getDirections = getDirections;
+	vm.getLocation = getLocation;
+
 	activate();
 
 	//////////////
 
-	vm.getDirections = function(){
+	function getDirections(){
 		vm.loading = true;
 		GoogleMapsFactory.getTransitDirections(vm.currentLocation, vm.destination).then(function(res){
 			vm.directions = res.routes[0].legs[0].steps;
 			vm.loading = false;
 		});
 	}
-
-	vm.getLocation = function(){
+	function getLocation(){
 		vm.loading = true;
 		GeoLocationFactory.getLocation(function(position){
 			GoogleMapsFactory.reverseGeocode(position.coords.latitude, position.coords.longitude).then(function(res){
@@ -29,7 +31,6 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 			})
 		})
 	}
-
 	function activate(){
 		TravelSmartFactory.getEvents().then(function(res){
 			vm.events = res;

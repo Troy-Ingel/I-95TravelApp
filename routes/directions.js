@@ -26,7 +26,6 @@ router.get('/transit', function(req, res){
 
 .get('/geocode', function(req, res){
 
-
 	const baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
 	const latlng = req.query.latlng;
 	var url = baseUrl + '?latlng=' + latlng;

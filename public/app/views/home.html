@@ -8,6 +8,7 @@
 					<h2>{{event.RoadwayName}}</h2>
 					<p>{{event.Location}}</p>
 					<p>Duration: {{event.Description}}</p>
+					<p>Last Updated: {{event.LastUpdated}}</p>
 					<hr>
 				</div>
 			</div>
@@ -51,8 +52,6 @@
 				<button class="btn btn-success" ng-show="!vm.currentLocation" ng-click="vm.getLocation()">Get Location</button>
 				<button class="btn btn-success" ng-click="vm.getDirections()" ng-show="vm.destination && vm.currentLocation">Get Directions</button>
 
-
-
 				<div ng-show="vm.directions">
 					<hr>
 					<table class="table">
@@ -72,31 +71,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- 
-	COLUMNS IN RESPONSE
-CountyName
-Description
-DirectionOfTravel
-EventSubType
-EventType
-FirstArticleCity
-ID
-LanesAffected
-LanesStatus
-LastUpdated
-Latitude
-LcsEntries
-Location
-Longitude
-MapEncodedPolyline
-NavteqLinkId
-PlannedEndDate
-PrimaryLocation
-RegionName
-Reported
-RoadwayName
-SecondCity
-SecondaryLocation
-Severity
-StartDate -->
