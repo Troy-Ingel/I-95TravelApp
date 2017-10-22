@@ -10,4 +10,4 @@ express()
 	.use(express.static('public'))
 	.use('/travel', travelRouter)
 	.use('/directions', directionsRouter)
-	.listen(8080, ()=>console.log('Listening on http://localhost:8080'));
+	.listen(port, ()=>console.log('Listening on http://localhost:8080'));
