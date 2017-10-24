@@ -9,7 +9,22 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4 col-md-4">
+		<div class="col-lg-3 col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Travel Cams</div>
+				<div class="panel-body">
+					<select name="city" ng-model="city.name" ng-options="camera.cityName for camera in vm.cameras">
+					</select>
+					<hr>
+					<div ng-repeat="camera in vm.cameras" ng-show="camera.cityName === {{city.name}}" ng-cloak>
+						 <a href="{{camera.tooltipUrl}}">{{camera.displayName}}</a>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-md-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Recent Events</div>
 				<div class="panel-body">
@@ -24,7 +39,7 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 col-md-4">
+		<div class="col-lg-3 col-md-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Alerts</div>
 				<div class="panel-body">
@@ -39,7 +54,7 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4 col-md-4">
+		<div class="col-lg-3 col-md-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Transit Options</div>
 				<div class="panel-body">

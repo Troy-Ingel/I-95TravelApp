@@ -28,7 +28,7 @@ router.get('/events', function(req, res){
 })
 
 .get('/alerts', function(req, res){
-	https.get(baseUrl + 'getalerts?format=json&key=' + apiKey, (httpRes) => {
+    https.get(baseUrl + 'getalerts?format=json&key=' + apiKey, (httpRes) => {
 		let data = '';
 		httpRes.on('data', (chunk)=> data += chunk);
 		httpRes.on('end', ()=> res.json(JSON.parse(data)));
