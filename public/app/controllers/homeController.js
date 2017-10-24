@@ -63,6 +63,11 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 		});
 		CameraFactory.getCameras().then(function(res){
 			vm.cameras = res;
+
+			//Remove duplicates from cameras array (avoid duplicate options in select)
+			var cameraCities = {};
+			for(var i = 0;i < res.length; i++) cameraCities[res[i].cityName] = 1;
+			vm.cameraCities = cameraCities;
 		});
 	}
 }

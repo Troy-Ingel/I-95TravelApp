@@ -13,13 +13,20 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading">Travel Cams</div>
 				<div class="panel-body">
-					<select name="city" ng-model="city.name" ng-options="camera.cityName for camera in vm.cameras">
-					</select>
-					<hr>
-					<div ng-repeat="camera in vm.cameras" ng-show="camera.cityName === {{city.name}}" ng-cloak>
-						 <a href="{{camera.tooltipUrl}}">{{camera.displayName}}</a>
+
+					<div ng-show="vm.cameras.length > 0">
+						<select ng-model="vm.selectedCameraCity" class="form-control">
+							<option value=""></option>
+							<option ng-repeat="(cityName, value) in vm.cameraCities" ng-value="cityName">{{::cityName}}</option>
+						</select>
 						<hr>
+
+						<div ng-show="vm.selectedCameraCity" ng-repeat="camera in vm.cameras | filter: vm.selectedCameraCity" ng-cloak>
+							<a target="_blank" href="{{::camera.tooltipUrl}}">{{::camera.displayName}}</a>
+							<hr>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
