@@ -2,12 +2,13 @@ angular
 	.module('mainApp')
 	.config(AngularConfiguration);
 
-AngularConfiguration.$inject = ['$routeProvider'];
+AngularConfiguration.$inject = ['$routeProvider', '$sceDelegateProvider'];
 
-function AngularConfiguration($routeProvider){
+function AngularConfiguration($routeProvider, $sceDelegateProvider){
 	$routeProvider.when('/', {
 		templateUrl: 'app/views/home.html',
 		controller: 'HomeController',
 		controllerAs: 'vm'
 	});
+	$sceDelegateProvider.resourceUrlWhitelist(['**']);
 }

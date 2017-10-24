@@ -2,11 +2,12 @@ angular
 	.module('mainApp')
 	.controller('HomeController', HomeController);
 
-HomeController.$inject = ['TravelSmartFactory', 'GoogleMapsFactory', 'GeoLocationFactory'];
+HomeController.$inject = ['TravelSmartFactory', 'GoogleMapsFactory', 'GeoLocationFactory', 'CameraFactory'];
 
-function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactory){
+function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactory, CameraFactory){
 	var vm = this;
 	vm.events = [];
+	vm.cameras = [];
 
 	vm.getDirections = getDirections;
 	vm.getLocation = getLocation;
@@ -59,6 +60,9 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 		});
 		TravelSmartFactory.getAlerts().then(function(res){
 			vm.alerts = res;
+		});
+		CameraFactory.getCameras().then(function(res){
+			vm.cameras = res;
 		});
 	}
 }
