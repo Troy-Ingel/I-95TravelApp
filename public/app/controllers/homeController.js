@@ -43,12 +43,17 @@ function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 			var drivingDuration = Number(vm.drivingDirections.duration.value);
 			var transitDuration = Number(vm.directions.duration.value);
 
-			var difference = (Math.abs(drivingDuration - transitDuration)) / 60;
+			var difference = ((Math.abs(drivingDuration - transitDuration)) / 60);
+
+			var hours = Math.floor(difference/60).toFixed(0);
+			var minutes = (difference % 60).toFixed(0);
+
+			difference = (hours > 0 ? hours + " hours and " : '') + minutes + " minutes";
 
 			if(drivingDuration < transitDuration){
-				return "You should drive to get there " + difference + " min faster";
+				return "You should drive to get there " + difference + " faster";
 			} else if(transitDuration < drivingDuration){
-				return "You should take the train to get there " + difference + " min faster";
+				return "You should take the train to get there " + difference + " faster";
 			} else{
 				return "Not sure";
 			}
