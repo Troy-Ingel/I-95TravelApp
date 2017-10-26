@@ -1,5 +1,7 @@
 <div class="container">
-	
+
+	<h1 class="page-header">I-95 Travel Recommendations</h1>
+
 	<div class="alert alert-warning" ng-show="vm.directions && vm.drivingDirections">
 		<h2>Travel Recommendation</h2>
 		<p><b>Transit Time:</b> {{vm.directions.duration.text}}</p>
@@ -8,30 +10,33 @@
 		<h4>{{ vm.getRecommendation() }}</h4>
 	</div>
 
+	<!-- Only displayed on mobile devices -->
+	<div class="btn-group mb20" ng-show="vm.mobile">
+		<button ng-class="{active: vm.panelToShow==1}" class="btn btn-primary" ng-click="vm.panelToShow=1">Alerts</button>
+		<button ng-class="{active: vm.panelToShow==2}" class="btn btn-primary" ng-click="vm.panelToShow=2">Events</button>
+		<button ng-class="{active: vm.panelToShow==3}" class="btn btn-primary" ng-click="vm.panelToShow=3">Transit</button>
+		<button ng-class="{active: vm.panelToShow==4}" class="btn btn-primary" ng-click="vm.panelToShow=4">Cameras</button>
+	</div>
+
 	<div class="row">
-		<div class="col-lg-3 col-md-3">
+		<!-- Alerts -->
+		<div class="col-lg-3 col-md-3" ng-show="vm.panelToShow==1 || !vm.mobile">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Travel Cams</div>
+				<div class="panel-heading">Recent Alerts</div>
 				<div class="panel-body">
-
-					<div ng-show="vm.cameras.length > 0">
-						<select ng-model="vm.selectedCameraCity" class="form-control">
-							<option value=""></option>
-							<option ng-repeat="(cityName, value) in vm.cameraCities" ng-value="cityName">{{::cityName}}</option>
-						</select>
+					<div ng-repeat="alert in vm.alerts" ng-cloak ng-show="vm.alerts.length > 0">
+						<p>{{alert.Message}}</p>
 						<hr>
-
-						<div ng-show="vm.selectedCameraCity" ng-repeat="camera in vm.cameras | filter: vm.selectedCameraCity" ng-cloak>
-							<a target="_blank" href="{{::camera.tooltipUrl}}">{{::camera.displayName}}</a>
-							<hr>
-						</div>
 					</div>
-
+					<div class="alert alert-warning" ng-show="vm.alerts.length == 0">
+						<h4>No alerts at this time</h4>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-md-3">
+		<!-- Recent Events -->
+		<div class="col-lg-3 col-md-3" ng-show="vm.panelToShow==2 || !vm.mobile">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Recent Events</div>
 				<div class="panel-body">
@@ -46,22 +51,8 @@
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-md-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading">Alerts</div>
-				<div class="panel-body">
-					<div ng-repeat="alert in vm.alerts" ng-cloak ng-show="vm.alerts.length > 0">
-						<p>{{alert.Message}}</p>
-						<hr>
-					</div>
-					<div class="alert alert-warning" ng-show="vm.alerts.length == 0">
-						<h4>No alerts at this time</h4>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-3 col-md-3">
+		<!-- Transit Options -->
+		<div class="col-lg-3 col-md-3" ng-show="vm.panelToShow==3 || !vm.mobile">
 			<div class="panel panel-primary">
 				<div class="panel-heading">Transit Options</div>
 				<div class="panel-body">
@@ -107,6 +98,34 @@
 						<p><b>Arrival Time:</b> {{vm.directions.arrival_time.text}}</p>
 						<p><b>Total time:</b> {{vm.directions.duration.text}}</p>
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Travel Cameras -->
+		<div class="col-lg-3 col-md-3" ng-show="vm.panelToShow==4 || !vm.mobile">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Travel Cams</div>
+				<div class="panel-body">
+
+					<div ng-show="vm.cameras.length > 0">
+						Select a city:
+						<select ng-model="vm.selectedCameraCity" class="form-control">
+							<option value=""></option>
+							<option ng-repeat="(cityName, value) in vm.cameraCities" ng-value="cityName">{{::cityName}}</option>
+						</select>
+						<hr>
+
+						<div ng-show="vm.selectedCameraCity" dir-paginate="camera in vm.cameras | filter: vm.selectedCameraCity | itemsPerPage: 3" ng-cloak>
+							<a target="_blank" href="{{::camera.tooltipUrl}}">{{::camera.displayName}}</a>
+							<hr>
+						</div>
+					</div>
+
+					<div ng-show="vm.selectedCameraCity">
+						<dir-pagination-controls auto-hide="true"></dir-pagination-controls>
+					</div>
+
 				</div>
 			</div>
 		</div>
