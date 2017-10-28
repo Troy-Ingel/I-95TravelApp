@@ -47,6 +47,9 @@
 						<p>Last Updated: {{event.LastUpdated}}</p>
 						<hr>
 					</div>
+					<div class="alert alert-warning" ng-show="vm.events.length == 0">
+						<h4>No events at this time</h4>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -105,7 +108,7 @@
 		<!-- Travel Cameras -->
 		<div class="col-lg-3 col-md-3" ng-show="vm.panelToShow==4 || !vm.mobile">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Travel Cams</div>
+				<div class="panel-heading">Road Cameras</div>
 				<div class="panel-body">
 
 					<div ng-show="vm.cameras.length > 0">
