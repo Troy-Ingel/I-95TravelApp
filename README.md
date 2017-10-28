@@ -1,5 +1,4 @@
-# TechChallenge
-# This README file explains how to use our I-95 traffic application.
+# TechChallenge - This README file explains how to use our I-95 traffic application.
 
 
 # The application can be accessed in multiple ways:
