@@ -4,6 +4,7 @@ angular
 
 GoogleMapsFactory.$inject = ['$http'];
 
+// set up the services needed for this factory
 function GoogleMapsFactory($http){
 
 	var service = {

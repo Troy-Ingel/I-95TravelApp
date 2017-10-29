@@ -1,12 +1,13 @@
+// import variables
 var express = require('express');
 var router = express.Router();
-
+// constants
 const https = require('https');
 const baseUrl = 'https://cttravelsmart.org/api/';
 const apiKey = '860e2b8fe69b47c785ba57af53aceb6b';
 
+// endpoint for fetching all I-95 travel events
 router.get('/events', function(req, res){
-
 	https.get(baseUrl + 'getevents?format=json&key=' + apiKey, (httpRes) => {
 		let data = '';
 		httpRes.on('data', (chunk)=> data += chunk);
@@ -26,7 +27,7 @@ router.get('/events', function(req, res){
 		res.json(err);
 	});
 })
-
+// endpoint for fetching all CT travel alerts
 .get('/alerts', function(req, res){
     https.get(baseUrl + 'getalerts?format=json&key=' + apiKey, (httpRes) => {
 		let data = '';

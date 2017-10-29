@@ -4,6 +4,7 @@ angular
 
 CameraFactory.$inject = ['$http'];
 
+// set up the services needed for this factory
 function CameraFactory($http){
 
 	var service = {
@@ -13,7 +14,7 @@ function CameraFactory($http){
 
 
 	function getCameras(){
-		return $http.get('/cameras/roadCameras')
+		return $http.get('/cameras')
 			.then((res)=>res.data)
 			.catch((err)=>console.error(err));
 	}

@@ -1,9 +1,11 @@
+// variables
 var express = require('express');
 var router = express.Router();
-
+// constants
 const https = require('https');
 const apiKey = 'AIzaSyDKWd6bBOs6KH10TcE5729ZTWeUdrIdyLI';
 
+// endpoint for fetching transit directions 
 router.get('/transit', function(req, res){
 
 	const baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
@@ -23,7 +25,7 @@ router.get('/transit', function(req, res){
 		res.json(err);
 	});
 })
-
+// endpoint for fetching driving directions
 .get('/driving', function(req, res){
 	const baseUrl = 'https://maps.googleapis.com/maps/api/directions/json';
 	const origin = req.query.origin;
@@ -42,7 +44,7 @@ router.get('/transit', function(req, res){
 		res.json(err);
 	});
 })
-
+// endpoint for fetching the users geolocation
 .get('/geocode', function(req, res){
 
 	const baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json';

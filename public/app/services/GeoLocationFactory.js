@@ -4,6 +4,7 @@ angular
 
 GeoLocationFactory.$inject = ['$http'];
 
+// set up the services needed for this factory
 function GeoLocationFactory($http){
 
 	var service = {

@@ -4,6 +4,7 @@ angular
 
 TravelSmartFactory.$inject = ['$http'];
 
+// set up the services needed for this factory
 function TravelSmartFactory($http){
 
 	var service = {
