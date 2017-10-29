@@ -15,6 +15,7 @@ function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 	vm.getLocation = getLocation;
 	vm.getRecommendation = getRecommendation;
 
+	// load data to display when the page initially loads (alerts/events)
 	activate();
 
 	//////////////
@@ -85,6 +86,7 @@ function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 			// Remove duplicates from cameras array (avoid duplicate options in select)
 			let unorderedCameraCities = {};
 			for(let i = 0;i < res.length; i++) unorderedCameraCities[res[i].cityName] = 1;
+			
 			// Order the city names
 			let orderedCameraCities = {};
 			Object.keys(unorderedCameraCities).sort().forEach(function(key) {
