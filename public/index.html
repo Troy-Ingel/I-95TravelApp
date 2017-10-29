@@ -80,7 +80,7 @@
 					<div class="panel-heading">Recent Events</div>
 					<div class="panel-body">
 						<div ng-repeat="event in vm.events" ng-show="event.RoadwayName" ng-cloak>
-							<h4>{{vm.addSpacesToCamelCase(event.EventType)}} Alert</h4>
+							<h4>{{vm.addSpacesToCamelCase(event.EventType)}} Reported</h4>
 							<p>{{event.Location}}</p>
 							<p>Duration: {{event.Description}}</p>
 							<p>Last Updated: {{event.LastUpdated}}</p>
