@@ -33,7 +33,18 @@ router.get('/events', function(req, res){
     https.get(baseUrl + 'getalerts?format=json&key=' + apiKey, (httpRes) => {
 		let data = '';
 		httpRes.on('data', (chunk)=> data += chunk);
-		httpRes.on('end', ()=> res.json(JSON.parse(data)));
+		httpRes.on('end', ()=> {
+			var json = JSON.parse(data);
+			var output = [];
+
+			//Look through all json received and search for 'I-95'
+			for(var i = 0; i < json.length; i++){
+				var cur = json[i];
+				if(cur.Message.indexOf('I-95') > -1) output.push(cur);
+			}
+
+			res.json(output);
+		});
 	}).on('error', (err) => {
 		res.json(err);
 	});
