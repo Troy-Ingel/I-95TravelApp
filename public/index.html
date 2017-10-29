@@ -47,6 +47,8 @@
 			<p><b>Driving Time:</b> {{vm.drivingDirections.duration.text}}</p>
 
 			<h4>{{ vm.getRecommendation() }}</h4>
+
+			<a target="_blank" ng-href="https://www.google.com/maps/dir/{{vm.currentLocation}}/{{vm.destination}}">View on Google Maps</a>
 		</div>
 
 		<!-- Only displayed on mobile devices -->
@@ -125,10 +127,10 @@
 								<tbody>
 									<tr ng-repeat="step in vm.directions.steps">
 										<td>
-
 											<b>{{::step.travel_mode}}</b>
 											<p ng-show="step.transit_details">Departs at: {{step.transit_details.departure_time.text}}</p>
 											<p>{{step.html_instructions}}</p>
+											<a target="_blank" ng-show="step.transit_details.line.url" ng-href="{{step.transit_details.line.url}}">More Info</a>
 										</td>
 										<td>{{step.duration.text}}</td>
 									</tr>

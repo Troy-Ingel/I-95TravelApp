@@ -27,12 +27,12 @@ function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 	function getDirections(){
 		vm.loading = true;
 		GoogleMapsFactory.getTransitDirections(vm.currentLocation, vm.destination).then(function(res){
-			vm.directions = res.routes[0].legs[0];
+			if(res.routes.length > 0) vm.directions = res.routes[0].legs[0];
 			vm.loading = false;
 		});
 
 		GoogleMapsFactory.getDrivingDirections(vm.currentLocation, vm.destination).then(function(res){
-			vm.drivingDirections = res.routes[0].legs[0];
+			if(res.routes.length > 0) vm.drivingDirections = res.routes[0].legs[0];
 			vm.loading = false;
 		});
 	}
