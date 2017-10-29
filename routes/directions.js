@@ -1,8 +1,8 @@
-// variables
+// import modules
 var express = require('express');
 var router = express.Router();
-// constants
 const https = require('https');
+
 const apiKey = 'AIzaSyDKWd6bBOs6KH10TcE5729ZTWeUdrIdyLI';
 
 // endpoint for fetching transit directions 

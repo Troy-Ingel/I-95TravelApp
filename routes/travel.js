@@ -1,8 +1,9 @@
-// import variables
+// import modules
 var express = require('express');
 var router = express.Router();
-// constants
 const https = require('https');
+
+// constants
 const baseUrl = 'https://cttravelsmart.org/api/';
 const apiKey = '860e2b8fe69b47c785ba57af53aceb6b';
 
@@ -38,4 +39,4 @@ router.get('/events', function(req, res){
 	});
 });
 
-module.exports = router
+module.exports = router;
