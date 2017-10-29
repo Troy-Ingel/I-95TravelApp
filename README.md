@@ -4,7 +4,7 @@
 # The application can be accessed in multiple ways:
 
 ---- ACCESS DEPLOYED SERVER ----
- The app can be reached directly at https://tech-challenge-95.herokuapp.com/#!/
+ The app can be reached directly at https://tech-challenge-95.herokuapp.com/
 
 
 ---- RUN SERVER LOCALLY FROM COMMAND LINE ----
