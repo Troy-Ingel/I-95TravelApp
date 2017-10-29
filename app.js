@@ -13,4 +13,4 @@ express()
 	.use('/travel', travelRouter)
 	.use('/directions', directionsRouter)
 	.use('/cameras', cameraRouter)
-	.listen(port, ()=>console.log('Listening on http://localhost:8080'));
+	.listen(port);
