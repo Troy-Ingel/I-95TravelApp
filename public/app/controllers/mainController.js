@@ -1,6 +1,6 @@
 angular
-.module('mainApp')
-.controller('MainController', MainController);
+	.module('mainApp')
+	.controller('MainController', MainController);
 
 MainController.$inject = ['TravelSmartFactory', 'GoogleMapsFactory', 'GeoLocationFactory', 'CameraFactory'];
 
@@ -14,6 +14,7 @@ function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 	vm.getDirections = getDirections;
 	vm.getLocation = getLocation;
 	vm.getRecommendation = getRecommendation;
+	vm.addSpacesToCamelCase = addSpacesToCamelCase;
 
 	// load data to display when the page initially loads (alerts/events)
 	activate();
@@ -66,6 +67,11 @@ function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactor
 				return "Not sure";
 			}
 		}
+	}
+	function addSpacesToCamelCase(string){
+		return string
+			.replace(/([A-Z])/g, ' $1')
+			.replace(/^./, function(str){ return str.toUpperCase(); });
 	}
 	// function to set up the initial values
 	function activate(){
