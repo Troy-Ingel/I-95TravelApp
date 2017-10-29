@@ -1,11 +1,11 @@
 angular
 .module('mainApp')
-.controller('HomeController', HomeController);
+.controller('MainController', MainController);
 
-HomeController.$inject = ['TravelSmartFactory', 'GoogleMapsFactory', 'GeoLocationFactory', 'CameraFactory'];
+MainController.$inject = ['TravelSmartFactory', 'GoogleMapsFactory', 'GeoLocationFactory', 'CameraFactory'];
 
 // this controller links the client to the server, and handles a lot of the front facing logic
-function HomeController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactory, CameraFactory){
+function MainController(TravelSmartFactory, GoogleMapsFactory, GeoLocationFactory, CameraFactory){
 	var vm = this;
 	vm.events = [];
 	vm.cameras = [];

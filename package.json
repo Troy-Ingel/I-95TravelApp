@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "^4.16.2",
     "gtfs-realtime-bindings": "0.0.4",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "request": "^2.83.1"
   },
   "devDependencies": {},
   "scripts": {

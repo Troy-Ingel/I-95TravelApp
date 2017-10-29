@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"draw": 3,
 	"columns": [{
 		"data": "sortId",
@@ -77,4 +77,4 @@
 		"value": "",
 		"regex": false
 	}
-}
+};
