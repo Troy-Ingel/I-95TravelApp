@@ -83,7 +83,7 @@
 							<h4>{{vm.addSpacesToCamelCase(event.EventType)}} Reported</h4>
 							<p>{{event.Location}}</p>
 							<p>Duration: {{event.Description}}</p>
-							<p>Last Updated: {{event.LastUpdated}}</p>
+							<p>Last Updated: {{vm.reformatDate(event.LastUpdated)}}</p>
 							<hr>
 						</div>
 						<div class="alert alert-warning" ng-show="vm.events.length == 0" ng-cloak>
@@ -104,8 +104,8 @@
 						</div>
 
 						<div ng-show="vm.currentLocation">
-							<p>Current Location:</p>
-							<input type="text" class="form-control" ng-model="vm.currentLocation" readonly>
+							<p>Starting Location:</p>
+							<input type="text" class="form-control" ng-model="vm.currentLocation">
 						</div>
 
 						<div ng-show="vm.currentLocation">
@@ -113,8 +113,7 @@
 							<input type="text" class="form-control" ng-model="vm.destination">
 						</div>
 
-						<button ng-disabled="vm.loading" class="btn btn-success" ng-show="!vm.currentLocation" ng-click="vm.getLocation()">Get Location</button>
-						<button ng-disabled="vm.loading" class="btn btn-success" ng-click="vm.getDirections()" ng-show="vm.destination && vm.currentLocation">Get Directions</button>
+						<button ng-disabled="vm.loading" class="btn btn-success mt20" ng-click="vm.getDirections()" ng-show="vm.destination && vm.currentLocation">Get Directions</button>
 
 						<div ng-show="vm.directions">
 							<hr>
